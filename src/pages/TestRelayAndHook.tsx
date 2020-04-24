@@ -13,6 +13,8 @@ const TestRelayAndHook: React.FC = (props) => {
         query TestRelayAndHookQuery {
           user {
             id
+            firstName
+            age
           }
         }
       `}
