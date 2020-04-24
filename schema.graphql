@@ -1,0 +1,29 @@
+schema {
+  query: RootQueryType
+  mutation: Mutation
+}
+
+type Company {
+  id: String
+  name: String
+  description: String
+  users: [User]
+}
+
+type Mutation {
+  addUser(firstName: String!, age: Int, companyId: String): User
+  deleteUser(id: String!): User
+}
+
+type RootQueryType {
+  user: [User]
+  company(id: String): Company
+}
+
+type User {
+  id: String
+  firstName: String
+  age: Int
+  company: Company
+}
+

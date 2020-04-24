@@ -18,7 +18,7 @@ const CompanyType = new GraphQLObjectType({
     users: {
       type: new GraphQLList(UserType),
       resolve(parentValue, args) {
-        return axios.get(`http://localhost:3000/companies/${parentValue.id}/users`)
+        return axios.get(`http://localhost:3002/companies/${parentValue.id}/users`)
           .then(res => res.data)
       }
     }
@@ -34,7 +34,7 @@ const UserType = new GraphQLObjectType({
     company: {
       type: CompanyType,
       resolve(parentValue, args) {
-        return axios.get(`http://localhost:3000/companies/${parentValue.companyId}`)
+        return axios.get(`http://localhost:3002/companies/${parentValue.companyId}`)
           .then(res => res.data);
       }
     }
@@ -48,7 +48,7 @@ const RootQuery = new GraphQLObjectType({
       type: new GraphQLList(UserType),
       // args: { },
       resolve(parentValue, args) {
-        return axios.get(`http://localhost:3000/users`)
+        return axios.get(`http://localhost:3002/users`)
           .then(resp => resp.data);
       }
     },
@@ -56,7 +56,7 @@ const RootQuery = new GraphQLObjectType({
       type: CompanyType,
       args: { id: { type: GraphQLString } },
       resolve(parentValue, args) {
-        return axios.get(`http://localhost:3000/companies/${args.id}`)
+        return axios.get(`http://localhost:3002/companies/${args.id}`)
           .then(resp => resp.data);
       }
     }
@@ -74,7 +74,7 @@ const mutation = new GraphQLObjectType({
         companyId: { type: GraphQLString }
       },
       resolve(parentValue, { firstName, age, companyId }) {
-        return axios.post('http://localhost:3000/users', { firstName, age, companyId })
+        return axios.post('http://localhost:3002/users', { firstName, age, companyId })
           .then(res => res.data);
       }
     },
@@ -84,7 +84,7 @@ const mutation = new GraphQLObjectType({
         id: { type: new GraphQLNonNull(GraphQLString) }
       },
       resolve(parentValue, { id }) {
-        return axios.delete(`http://localhost:3000/users/${id}`)
+        return axios.delete(`http://localhost:3002/users/${id}`)
           .then(res => res.data);
       }
     }
