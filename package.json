@@ -24,6 +24,7 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
     "react-window": "^1.8.5",
+    "relay-runtime": "^9.0.0",
     "typescript": "~3.7.2"
   },
   "scripts": {
@@ -32,7 +33,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "schema": "get-graphql-schema http://localhost:3001/graphql > schema.graphql",
-    "relay": "relay-compiler --language typescript"
+    "relay": "relay-compiler"
   },
   "eslintConfig": {
     "extends": "react-app"

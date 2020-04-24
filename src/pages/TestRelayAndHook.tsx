@@ -3,14 +3,14 @@ import { graphql } from 'babel-plugin-relay/macro';
 import { QueryRenderer } from 'react-relay';
 import environment from '../providers/Relay/environment';
 
-const TestRealyAndHook: React.FC = (props) => {
+const TestRelayAndHook: React.FC = (props) => {
   return (
     <QueryRenderer
       fetchPolicy='store-and-network'
       environment={environment}
       variables={{}}
       query={graphql`
-        query TestRealyAndHookQuery {
+        query TestRelayAndHookQuery {
           user {
             id
           }
@@ -27,7 +27,7 @@ const TestRealyAndHook: React.FC = (props) => {
   );
 };
 
-export default TestRealyAndHook;
+export default TestRelayAndHook;
 
 const Hook = (props: any) => {
   console.log(props);
