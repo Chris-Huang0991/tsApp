@@ -29,7 +29,7 @@ function ListItemLink (props: ListItemProps<'a', { button?: true }>) {
 
 
 
-const SimpleListC: React.FC<SimpleListCProps> = (props) => {
+const SimpleListC: React.FC = (props) => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -49,12 +49,12 @@ const SimpleListC: React.FC<SimpleListCProps> = (props) => {
       </List>
       <Divider />
       <List component="nav" aria-label="secondary mailbox folders">
-        {props.data.map((e: string) => {
+        {/* {props.data.map((e: string) => {
           return (
             <ListItem button>
               <ListItemText primary={`${e}`} />
             </ListItem>)
-        })}
+        })} */}
         <ListItemLink href="#simple-list">
           <ListItemText primary="Spam" />
         </ListItemLink>

@@ -2,6 +2,7 @@ import React from 'react';
 import { graphql } from 'babel-plugin-relay/macro';
 import { QueryRenderer } from 'react-relay';
 import environment from '../providers/Relay/environment';
+import Test from './test'
 
 const TestRelayAndHook: React.FC = (props) => {
   return (
@@ -19,9 +20,12 @@ const TestRelayAndHook: React.FC = (props) => {
         }
       `}
       render={({ error, props }) => {
+        const a={a:1, b:2, c:3}
         return (
           <div>
             <Hook {...props} />
+            1232123
+            <Test {...a}/>
           </div>
         );
       }}
