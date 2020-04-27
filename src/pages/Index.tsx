@@ -1,6 +1,11 @@
 import React from 'react';
 import clsx from 'clsx';
-import { createStyles, makeStyles, useTheme, Theme } from '@material-ui/core/styles';
+import {
+  createStyles,
+  makeStyles,
+  useTheme,
+  Theme,
+} from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -20,13 +25,15 @@ import BusinessIcon from '@material-ui/icons/Business';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import SecurityIcon from '@material-ui/icons/Security';
 import { Switch, Route, Link } from 'react-router-dom';
-import Dashboard from './Dashboard';
-import CompanyList from './CompanyList';
-import Profile from './Profile';
-import Account from './Account';
-import logo from '../public/logo.png'
-import Err from './Err'
-import { routes } from './utils/routes'
+// import Dashboard from './Dashboard';
+// import CompanyList from './CompanyList';
+// import Profile from './Profile';
+// import Account from './Account';
+import logo from '../public/logo.png';
+// import Err from './Err';
+import { routes } from './utils/routes';
+
+import Test from './test';
 
 const drawerWidth = 240;
 
@@ -92,24 +99,26 @@ const useStyles = makeStyles((theme: Theme) =>
       padding: theme.spacing(3),
     },
     logo: {
-      height: '20px'
+      height: '20px',
     },
     drawerLink: {
       color: 'black',
-      textDecoration: 'none'
-    }
-  }),
+      textDecoration: 'none',
+    },
+  })
 );
 
-export default function MiniDrawer () {
+export default function MiniDrawer() {
   // console.log(routes)
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-  const Menu = [{ Icon: DashboardIcon, name: 'Dashboard' },
-  { Icon: BusinessIcon, name: 'CompanyList' },
-  { Icon: AccountBoxIcon, name: 'profile' },
-  { Icon: SecurityIcon, name: 'account' }];
+  const Menu = [
+    { Icon: DashboardIcon, name: 'Dashboard' },
+    { Icon: BusinessIcon, name: 'CompanyList' },
+    { Icon: AccountBoxIcon, name: 'profile' },
+    { Icon: SecurityIcon, name: 'account' },
+  ];
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -123,33 +132,31 @@ export default function MiniDrawer () {
     <div className={classes.root}>
       <CssBaseline />
       <AppBar
-        position="fixed"
+        position='fixed'
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open,
         })}
       >
         <Toolbar>
           <IconButton
-            color="inherit"
-            aria-label="open drawer"
+            color='inherit'
+            aria-label='open drawer'
             onClick={handleDrawerOpen}
-            edge="start"
+            edge='start'
             className={clsx(classes.menuButton, {
               [classes.hide]: open,
             })}
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap>
+          <Typography variant='h6' noWrap>
             Endata claim System
           </Typography>
         </Toolbar>
       </AppBar>
 
-
-
       <Drawer
-        variant="permanent"
+        variant='permanent'
         className={clsx(classes.drawer, {
           [classes.drawerOpen]: open,
           [classes.drawerClose]: !open,
@@ -163,10 +170,14 @@ export default function MiniDrawer () {
       >
         <div className={classes.toolbar}>
           <div>
-            <img src={logo} alt="logo" className={classes.logo} />
+            <img src={logo} alt='logo' className={classes.logo} />
           </div>
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+            {theme.direction === 'rtl' ? (
+              <ChevronRightIcon />
+            ) : (
+              <ChevronLeftIcon />
+            )}
           </IconButton>
         </div>
         <Divider />
@@ -181,31 +192,21 @@ export default function MiniDrawer () {
                   <ListItemText primary={name} />
                 </ListItem>
               </Link>
-            )
+            );
           })}
         </List>
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />
         <Switch>
-          {/* <Route exact component={CompanyList} path='/Dashboard'></Route> */}
-          <Route {...{exact:true, component:Dashboard, path:'/Dashboard'}} render={
-            ()=>(
-              <Dashboard {...{data: ['a', 'a']}}/>
-            )
-          }></Route>
-          {/* {routes.map(({ exact, path, component: Component, ...rest }, key) =>
-            (
-              <Route key={key} exact={exact} path={path}
-                render={() => 
-                  {
-                   return (
-                    <Component  {...rest}/>
-                  )}
-                }>
-              </Route>
-            )
-          )} */}
+          {routes.map(({ exact, path, component: Component, ...rest }, key) => (
+            <Route
+              key={key}
+              exact={exact}
+              path={path}
+              render={() => <Component {...rest} />}
+            ></Route>
+          ))}
         </Switch>
       </main>
     </div>

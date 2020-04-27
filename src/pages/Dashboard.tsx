@@ -18,9 +18,9 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-type SimpleListCProps = {
-  data: string[],
-};
+// type SimpleListCProps = {
+//   data: string[],
+// };
 
 function ListItemLink (props: ListItemProps<'a', { button?: true }>) {
   return <ListItem button component="a" {...props} />;
@@ -30,6 +30,7 @@ function ListItemLink (props: ListItemProps<'a', { button?: true }>) {
 
 
 const SimpleListC: React.FC = (props) => {
+  console.log(props)
   const classes = useStyles();
   return (
     <div className={classes.root}>
