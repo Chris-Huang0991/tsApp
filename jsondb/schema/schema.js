@@ -88,10 +88,28 @@ const RootQuery = new GraphQLObjectType({
 const mutation = new GraphQLObjectType({
   name: 'Mutation',
   fields: {
-    addUser: {
+    changeUserProfile: {
       type: UserType,
       args: {
         firstName: { type: new GraphQLNonNull(GraphQLString) },
+        age: { type: GraphQLInt },
+        companyId: { type: GraphQLString },
+      },
+      resolve(parentValue, {firstName, age, companyId }) {
+        console.log(age)
+        return axios
+          .post(`http://localhost:3002/users`,{
+            firstName:firstName,
+            age:age,
+            companyId:companyId
+          })
+          .then((resp) => resp.data)
+      },
+    },
+    addNewUser: {
+      type: UserType,
+      args: {
+        firstName: { type: GraphQLString },
         age: { type: GraphQLInt },
         companyId: { type: GraphQLString },
       },

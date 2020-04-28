@@ -13,7 +13,8 @@ type Company {
 }
 
 type Mutation {
-  addUser(firstName: String!, age: Int, companyId: String): User
+  changeUserProfile(firstName: String!, age: Int, companyId: String): User
+  addNewUser(firstName: String!, age: Int, companyId: String): User
   deleteUser(id: String!): User
 }
 
