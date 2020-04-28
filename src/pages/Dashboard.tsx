@@ -18,18 +18,18 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-// type SimpleListCProps = {
-//   data: string[],
-// };
+type SimpleListCProps = {
+  data: string[],
+};
 
-function ListItemLink (props: ListItemProps<'a', { button?: true }>) {
+const ListItemLink =(props: ListItemProps<'a', { button?: true }>) =>{
   return <ListItem button component="a" {...props} />;
 }
 
 
 
 
-const SimpleListC: React.FC = (props) => {
+const SimpleListC: any = (props: SimpleListCProps) => {
   console.log(props)
   const classes = useStyles();
   return (

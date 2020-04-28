@@ -7,6 +7,8 @@ type Company {
   id: String
   name: String
   description: String
+  address: String
+  website: String
   users: [User]
 }
 
@@ -16,8 +18,10 @@ type Mutation {
 }
 
 type RootQueryType {
-  user: [User]
-  company(id: String): Company
+  getUserById(id: String): User
+  getAllUser: [User]
+  getCompanyById(id: String): Company
+  getAllCompany: [Company]
 }
 
 type User {

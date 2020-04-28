@@ -199,14 +199,9 @@ export default function MiniDrawer() {
       <main className={classes.content}>
         <div className={classes.toolbar} />
         <Switch>
-          {routes.map(({ exact, path, component: Component, ...rest }, key) => (
-            <Route
-              key={key}
-              exact={exact}
-              path={path}
-              render={() => <Component {...rest} />}
-            ></Route>
-          ))}
+          <React.Suspense fallback='Loading...'>
+            {routes.map(props => <Route key={props.path} {...props} />)}
+          </React.Suspense>
         </Switch>
       </main>
     </div>
